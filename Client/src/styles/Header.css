@@ -1,0 +1,198 @@
+header {
+  position: relative;
+  z-index: 999;
+}
+
+.navbar-sticky {
+  top: 0;
+  background-color: #191919;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+  -webkit-transition: all .15s ease-out 0s !important;
+  transition: all .15s ease-out 0s !important;
+}
+
+.navbar-sticky.hidden {
+  -webkit-transform: translate3d(0, -101%, 0) !important;
+  transform: translate3d(0, -101%, 0) !important;
+}
+
+.navbar-sticky.visible {
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.navbar-expand {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 20px 25px;
+  pointer-events: initial;
+  z-index: 2;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.navbar-expand.relative {
+  position: relative;
+}
+
+.navbar-expand .navbar-nav {
+  display: inline-block;
+}
+
+.navbar-expand .navbar-nav.toggle {
+  display: none;
+}
+
+.navbar-expand .navbar-nav.toggle .toggle-icon {
+  font-size: 20px;
+}
+
+.navbar .navbar-brand-sticky {
+  display: none;
+}
+
+.navbar-sticky .navbar-brand-regular {
+  display: none;
+}
+
+.navbar-sticky .navbar-brand-sticky {
+  display: inline;
+}
+
+.navbar-sticky.hide {
+  -webkit-transform: translateY(-100%) !important;
+  transform: translateY(-100%) !important;
+}
+
+.navbar-expand .navbar-nav .nav-item {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.navbar-expand .navbar-nav ul .nav-item {
+  display: block;
+}
+
+.navbar-expand .navbar-nav .nav-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.navbar-expand .navbar-nav .nav-link:hover {
+  color: rgba(255, 255, 255, .75);
+}
+
+.navbar-expand.navbar-sticky .navbar-nav .nav-link,
+.navbar-expand.navbar-light .navbar-nav .nav-link {
+  color: #ffffff;
+}
+
+.navbar-expand .navbar-nav .dropdown-menu .nav-link {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 0.9125rem;
+  color: #2c2e30;
+  padding: 0.625rem 1.25rem;
+}
+
+.dropdown .dropdown-menu {
+  display: block;
+  min-width: 14.375rem;
+  margin: 0;
+  padding: 0.625rem 0;
+  border: none;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dropdown:hover > .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-duration: .4s;
+  transition-duration: .4s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
+}
+
+.dropdown-menu .dropdown-menu {
+  top: -8px;
+  left: 100%;
+}
+
+.menu .items {
+  width: calc(100% + 15px);
+}
+
+.menu .navbar-nav {
+  line-height: 1;
+}
+
+.menu .dropdown .dropdown-menu {
+  margin: 10px 0 15px 0;
+  padding: 0 0 0 15px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  display: none;
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu .dropdown .dropdown-menu.show {
+  display: block;
+}
+
+.menu .dropdown-menu .dropdown-menu {
+  position: relative;
+  top: initial;
+  left: initial;
+}
+
+.menu .nav-link {
+  margin: 0 5px;
+  padding: 10px 5px;
+}
+
+.menu .dropdown .dropdown-menu .nav-item .nav-link {
+  font-size: 1rem;
+  background: none;
+  margin: 0 5px 16px;
+  padding: 0;
+}
+
+.menu .nav-link:first-child {
+  padding-left: 0;
+  padding-right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c2e30;
+}

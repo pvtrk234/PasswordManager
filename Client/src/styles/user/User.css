@@ -1,0 +1,87 @@
+/* App.css */
+
+  
+  
+  .main-layout {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 200px;
+    font-weight: 500;
+    justify-content: left;
+    align-items: normal;
+    margin-top: 100px;  
+    color: white;
+    background-color: #0073e6;
+    padding: 1rem;
+    border-right: 1px solid #ddd;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 0.5rem 0;
+    cursor: pointer;
+  }
+  
+  .main-content {
+    margin-top: 100px;
+    display: flex;
+    flex: 1;
+    justify-content: left;
+    align-items: normal;
+    padding: 1rem;
+    background-color: #f4f5f7;
+  }
+  
+  .category-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .category-item {
+    margin-bottom: 1rem;
+  }
+  
+  .item-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .item-list ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .right-panel {
+    width: 300px;
+    padding: 1rem;
+    background-color: #fffbe7;
+    border-left: 1px solid #ddd;
+  }
+  
+  .verify-email {
+    border: 1px solid #c8ad6e;
+    background-color: #fffae8;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .verify-email h4 {
+    margin-top: 0;
+  }
+  
+  .verify-email button {
+    background-color: #0073e6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+  }
+  

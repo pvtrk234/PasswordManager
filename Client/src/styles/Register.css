@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
+.formRegister {
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  margin: 0;
+  padding: 0;
+
+  .container {
+    background-color: #272934;
+    padding-top: 5px; padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    width: 500px;
+  }
+
+  label {
+    font-size: 17px;
+  }
+
+  b {
+    font-size: 14px;
+    color: red;
+  }
+
+  h2 { 
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 25px;
+    font-size: 3em;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .usernameSection, .nameSection, .passwordSection {
+    font-size: 15px;
+    padding-bottom: 10px;
+
+    input[name=username], input[name=email], input[name=password] {
+      width: 93%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .smallInfo {
+      label {
+        color: red;
+        font-weight: 300;
+        font-size: 15px;
+        padding-bottom: -10px;
+      }
+    }
+  }
+  
+  .password-input-container {
+    position: relative;
+    display: block;
+  }
+  
+  .password-input-container input[type="password"], input[type="text"]  {
+    width: calc(100% - 30px); /* Szerokość pola hasła minus szerokość ikony */
+  }
+  
+  .password-toggle-icon {
+    position: absolute;
+    padding-right: 30px;
+    top: 50%;
+    right: 0;
+    color: black;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .passwordSection {
+    font-size: 15px;
+    padding-bottom: 25px;
+  
+    input[type=password], input[type=text] {
+      width: 93%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .smallInfo {
+      label { 
+        font-weight: 300;
+        font-size: 15px;
+      }
+    }
+  }
+  
+  button {
+    font-weight: 700;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 93%;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+  }
+  
+  .usernameSection.error input[name="username"],
+  .nameSection.error input[name="email"],
+  .passwordSection.error input[name="password"] {
+    border: 2px solid red;
+  }
+}
