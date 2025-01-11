@@ -1,6 +1,3 @@
 # PROJEKT NA STUDIA
-Autorzy:
+Autor:
 - Patryk Jagielski
-- Marcin Grochowski
-- Maciej Szuper
-- Weronika Golon
