@@ -51,6 +51,21 @@ function SelectEntryTypeModal({ userId, onNewEntry, closeModal }) {
     { text: "Mrs", value: "mrs"},
   ])
 
+  const generatePassword = () => {
+    const length = 12;
+    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=";
+    let password = "";
+    for (let i = 0, n = charset.length; i < length; ++i) {
+      password += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return password;
+  };
+
+  const handleGeneratePassword = () => {
+    const newPassword = generatePassword();
+    setEntryData(prevState => ({ ...prevState, password: newPassword }));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const type = types[type1];
@@ -116,13 +131,13 @@ function SelectEntryTypeModal({ userId, onNewEntry, closeModal }) {
                   </div>    
                   <div style={{ width: "48%", color: "black" }}>
                     <label style={{ fontSize: "15px", float: "left" }}>Hasło</label>
-                    <CDBIcon icon="circle" className="password-con" onClick={() => console.log('123')}/>
+                    <CDBIcon icon="key" className="password-con" onClick={handleGeneratePassword}/>
                     <CDBInputGroup
                       type={showPassword ? "text" : "password"} 
                       icon={showPassword ? "eye" : "eye-slash" }
                       containerClassName="flex-nowrap mb-3"
                       value={entryData.password || ''}
-                      onChange={handleChange('password')}
+                      onChange={ console.log(entryData.password)}
                       onClick={() => setShowPassword(!showPassword)}
                       maxLength={40}
                       required

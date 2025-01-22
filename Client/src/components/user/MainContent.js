@@ -33,6 +33,7 @@ function UserPanel() {
   const [selectedEntry, setSelectedEntry] = useState(null);
   const location = useLocation();
   const currentUser = AuthService.getCurrentUser();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -99,6 +100,14 @@ function UserPanel() {
       .catch(error => {
         console.error('Wystąpił błąd podczas usuwania wpisu', error);
       });
+  };
+
+  const handleMouseEnter = () => {
+    setIsDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDropdownOpen(false);
   };
 
   const renderModalContent = () => {
@@ -186,16 +195,15 @@ function UserPanel() {
   };
 
   return (
-    <div className="user-panel" style={{ marginTop: "100px", width: '100%' }}>
+    <div className="user-panel" style={{ marginTop: "150px", width: '100%' }}>
       <div className="content">
         {content === "Network Error" ? (
           <p style={{ color: "white"}}>Brak połączenia.</p>
         ) : (
           entries.length === 0 ? (
             <>
-              <CDBIcon icon="plus" className="me-1"/>
               <p style={{ color: "white"}}>Brak elementów.</p>
-              <CDBBtn icon="plus" style={{ marginLeft: "41.5%"}} onClick={() => openModal()}> {/* Ustawienie domyślnego typu modal */}
+              <CDBBtn icon="plus" style={{ marginLeft: "auto", marginRight: "auto"}} onClick={() => openModal()}> {/* Ustawienie domyślnego typu modal */}
                 <CDBIcon icon="plus" className="me-1"/>
                 Dodaj nowy element
               </CDBBtn>
@@ -204,59 +212,60 @@ function UserPanel() {
             <>
               <CDBTable striped fixed hover maxHeight="100%" tHead="red">
                 <CDBTableHeader>
-                  <tr>
-                    <th></th>
-                    <th>Nazwa</th>
-                    <th>Typ</th>
-                    <th><CDBIcon icon="ellipsis-v" /></th>
-                  </tr>
+                <tr>
+                  <th style={{ verticalAlign: 'middle' }}></th>
+                  <th style={{ verticalAlign: 'middle' }}>Nazwa</th>
+                  <th style={{ verticalAlign: 'middle' }}>Typ</th>
+                  <th style={{ verticalAlign: 'middle' }}><CDBIcon icon="ellipsis-v" /></th>
+                </tr>
                 </CDBTableHeader>
                 <CDBTableBody>
-                  {entries.map(entry => (
-                    <tr key={entry.id}>
-                      <td><CDBIcon  size="lg" icon={icons[entry.type]} /></td>
-                      <td>
-                        <a href="#" onClick={() => openModal(entry)}>{entry.name}</a>
-                      </td>
-                      <td>{entry.type}</td>
-                      <td>
-                        {entry.type === 'loginData' && (
+                {entries.map(entry => (
+                  <tr key={entry.id}>
+                    <td style={{ verticalAlign: 'middle' }}><CDBIcon size="lg" icon={icons[entry.type]} /></td>
+                    <td style={{ verticalAlign: 'middle' }}>
+                      <a href="#" onClick={() => openModal(entry)}>{entry.name}</a>
+                    </td>
+                    <td style={{ verticalAlign: 'middle' }}>{entry.type}</td>
+                    <td style={{ verticalAlign: 'middle' }}>
+                      {entry.type === 'loginData' && (
+                        <CDBDropDown>
+                          <CDBDropDownToggle color="light" caret>
+                            <CDBIcon icon="ellipsis-v" />
+                          </CDBDropDownToggle>
+                          <CDBDropDownMenu dropleft>
+                            <CDBDropDownItem icon="globe" onClick={() => handleCopy(entry.username)}>
+                              <CDBIcon icon="clone" className="me-1"/>
+                              Kopiuj nazwę użytkownika
+                            </CDBDropDownItem>
+                            <CDBDropDownItem onClick={() => handleCopy(entry.password)}>
+                              <CDBIcon icon="clone" className="me-1"/>
+                              Kopiuj hasło
+                            </CDBDropDownItem>
+                            <CDBDropDownItem onClick={() => handleDelete(entry.id)}>
+                              <CDBIcon icon="trash" className="me-1"/>
+                              Usuń
+                            </CDBDropDownItem>
+                          </CDBDropDownMenu>
+                        </CDBDropDown>
+                      )} {
+                        (entry.type === 'creditCard' || entry.type === 'identity' || entry.type === 'note') && (
                           <CDBDropDown>
                             <CDBDropDownToggle color="light" caret>
                               <CDBIcon icon="ellipsis-v" />
                             </CDBDropDownToggle>
                             <CDBDropDownMenu dropleft>
-                              <CDBDropDownItem icon="globe" onClick={() => handleCopy(entry.username)}>
-                                <CDBIcon icon="clone" className="me-1"/>
-                                  Kopiuj nazwę użytkownika
-                                </CDBDropDownItem>
-                              <CDBDropDownItem onClick={() => handleCopy(entry.password)}>
-                                <CDBIcon icon="clone" className="me-1"/>
-                                  Kopiuj hasło
-                                </CDBDropDownItem>
                               <CDBDropDownItem onClick={() => handleDelete(entry.id)}>
                                 <CDBIcon icon="trash" className="me-1"/>
-                                  Usuń
-                                </CDBDropDownItem>
+                                Usuń
+                              </CDBDropDownItem>
                             </CDBDropDownMenu>
                           </CDBDropDown>
-                        )} {
-                          (entry.type === 'creditCard' || entry.type === 'identity' || entry.type === 'note') && (
-                            <CDBDropDown>
-                            <CDBDropDownToggle color="light" caret>
-                              <CDBIcon icon="ellipsis-v" />
-                            </CDBDropDownToggle>
-                            <CDBDropDownMenu dropleft>
-                              <CDBDropDownItem onClick={() => handleDelete(entry.id)}>
-                                <CDBIcon icon="trash" className="me-1"/>
-                                  Usuń
-                                </CDBDropDownItem>
-                            </CDBDropDownMenu>
-                          </CDBDropDown>
-                          )}
-                      </td>
-                    </tr>
-                  ))}
+                        )
+                      }
+                    </td>
+                  </tr>
+                ))}
                 </CDBTableBody>
               </CDBTable>
             </>

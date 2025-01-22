@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { CDBModalHeader, CDBModalBody, CDBContainer, CDBBtn, CDBInput, CDBInputGroup, CDBIcon } from 'cdbreact';
 
 import UserService from '../../../services/user.service';
-import generatePassword from '../../../hooks/passwordGenerator';
 import "../../../styles/user/Modal.css";
 
 function ModifyLoginDataModal({ userId, entry, onEditEntry, closeModal }) {
@@ -51,12 +50,6 @@ function ModifyLoginDataModal({ userId, entry, onEditEntry, closeModal }) {
       });
   };
 
-  const handleGeneratePassword = () => {
-    const newPassword = generatePassword();
-    console.log(newPassword)
-    setPassword(newPassword);
-  };
-
   return (
     <>
       <CDBModalHeader toggle={closeModal}>Edytuj element</CDBModalHeader>
@@ -98,7 +91,7 @@ function ModifyLoginDataModal({ userId, entry, onEditEntry, closeModal }) {
                 <label style={{ fontSize: "15px", float: "left"}}>Hasło</label>
                 <CDBInputGroup 
                   type={showPassword ? "text" : "password"} 
-                  icon={showPassword ? "eye" : "eye-slash" }
+                   icon={showPassword ? "eye" : "eye-slash" }
                   containerClassName="mb-3 mt-0"
                   value={entry.password}
                   onClick={() => setShowPassword(!showPassword)}

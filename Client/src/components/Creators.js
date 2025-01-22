@@ -10,9 +10,6 @@ const Creators = () => {
                         <div className="breadcrumb-content text-center">
                             <h1 className="text-white">Twórcy</h1>
                             <h5 className="text-white">Patryk Jagielski</h5>
-                            <h5 className="text-white">Marcin Grochowski</h5>
-                            <h5 className="text-white">Maciej Szuper</h5>
-                            <h5 className="text-white">Weronika Golon</h5>
                         </div>
                     </div>
                 </div>
